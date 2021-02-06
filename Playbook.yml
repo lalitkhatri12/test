@@ -1,0 +1,26 @@
+- name: Play1
+  hosts: all
+  tasks:
+    - name: Tasks 1
+      command: date
+      
+    - name: Tasks 2  
+      command: mkdir lalit creates=/dcifent
+      
+    - name: Tasks 3
+      command: cat /dcifent/test.sh  chdir=/dcifent
+      
+    - name: copy file
+      copy: src=/dcifent/Lalit dest=/dcifent/Test
+      
+    - name: Run script
+      script: /etc/test.sh arg1 arg2
+      
+    - name: Start service
+      service: name=httpd state=started
+      
+    - name: Add line to file
+      lineinfile: 
+          path: /etc/resolve.conf 
+          line: "nameserver 10.1.2.3.4"
+      

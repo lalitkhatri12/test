@@ -1,0 +1,14 @@
+- name: play1
+  hosts: target1
+  tasks:
+  - name: ping
+    copy:
+     src: /home/osboxes/jenkins/jenkins.war
+     dest: /home/osboxes/
+- name: play2
+  hosts: target2
+  tasks:
+  - name: pingagain
+    copy:
+     src: /home/osboxes/jenkins/jenkins.war
+     dest: /home/osboxes/
