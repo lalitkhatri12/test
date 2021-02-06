@@ -1,0 +1,35 @@
+def gitInfo = {}
+
+pipeline {
+    agent {
+        label 'master'
+    }
+    
+    stages {
+        stage('checkout'){
+            steps {
+                script {
+                    gitInfo = checkout scm
+                    echo gitInfo.GIT_COMMIT
+                    sh """
+                    cd $WORKSPACE
+                    ls -ltr
+                    """
+                }
+            }
+        }
+        stage('run ansible playbook') {
+            steps {
+                script {
+                    sh """
+                    cd $WORKSPACE
+                    pwd
+                    ls -ltr
+                    ansible-playbook Playbook1.yml -i inventory.txt
+                    ansible-playbook Playbook2.yml -i inventory.txt
+                    """
+                }
+            }
+        }
+    }
+}
