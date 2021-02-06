@@ -1,0 +1,7 @@
+- name: play1
+  hosts: all
+  tasks:
+  - name: Copy File
+    copy:
+     src: /home/osboxes/jenkins/jenkins.war
+     dest: /home/osboxes/
