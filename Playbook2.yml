@@ -1,9 +1,11 @@
 - name: play1
   hosts: all
+  vars:
+   file_name: jenkins.war
   tasks:
   - name: Run command
     command: rm jenkins.war chdir=/home/osboxes/
   - name: Copy File
     copy:
-     src: /home/osboxes/jenkins/jenkins.war
+     src: '/home/osboxes/jenkins/{{ file_name }}'
      dest: /home/osboxes/
